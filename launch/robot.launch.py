@@ -6,7 +6,6 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Comm
 
 def generate_launch_description():
 
-
     # Pad naar het URDF/Xacro-bestand
     urdf_path = PathJoinSubstitution([
         FindPackageShare('my_robot_description'), 
@@ -17,13 +16,6 @@ def generate_launch_description():
     # Converteer Xacro naar URDF (indien van toepassing)
     robot_description = {'robot_description': Command(['xacro ', urdf_path])}
 
-    # Pad naar de configuratie van de slam_toolbox
-    slam_config_path = PathJoinSubstitution([
-        FindPackageShare('my_robot_description'),
-        'config',
-        'slam_params.yaml'
-    ])
-
     # Node voor robot_state_publisher
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -32,18 +24,14 @@ def generate_launch_description():
         parameters=[robot_description]
     )
 
-    # Node voor slam_toolbox
-    slamtoolbox = Node(
-        package='slam_toolbox',
-        executable='async_slam_toolbox_node',
-        name='slam_toolbox',
-        output='screen',
-        parameters=[slam_config_path]
+    joint_state_publisher = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        arguments=[urdf_path]
     )
 
 
     return LaunchDescription([
         robot_state_publisher,
-        slamtoolbox
-
+        joint_state_publisher,
     ])
