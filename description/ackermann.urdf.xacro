@@ -7,9 +7,6 @@
 
     <!-- Include sensors -->
     <xacro:include filename="lidar.xacro"/>
-    <!-- xacro:include filename="depth_camera.xacro"/ -->
-    <!-- <xacro:include filename="camera.xacro"/> -->
-    <!-- <xacro:include filename="3dlidar.xacro"/> -->
 
     <!-- Robot Variables -->
     <xacro:property name="body_mass" value="20.0" />
@@ -207,7 +204,7 @@
         </collision>
     </link>
 
-    <!-- Rear Rigth Wheel -->
+    <!-- Rear Right Wheel -->
     <joint name="rear_right_wheel_joint" type="continuous">
         <origin xyz="${rear_wheel_offset_x} ${-wheel_offset_y} ${wheel_offset_z}" rpy="-1.5708 0 0" />
         <parent link="chassis" />

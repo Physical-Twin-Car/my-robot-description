@@ -13,7 +13,7 @@ def generate_launch_description():
         'ackermann.urdf.xacro'
     ])
 
-    # Converteer Xacro naar URDF (indien van toepassing)
+    # Converteer Xacro naar URDF
     robot_description = {'robot_description': Command(['xacro ', urdf_path])}
 
     # Node voor robot_state_publisher
