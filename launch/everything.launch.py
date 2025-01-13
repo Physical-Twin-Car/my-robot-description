@@ -21,7 +21,8 @@ def generate_launch_description():
             output='screen',
             parameters=[{
                 'serial_port': '/dev/ttyUSB0',
-                'serial_baudrate': 115200
+                'serial_baudrate': 115200,
+                'angle_compensate': True
             }]
         ),
 
@@ -32,13 +33,6 @@ def generate_launch_description():
             )
         ),
 
-        # Odom Reader Node
-        Node(
-            package='odom_reader_pkg',
-            executable='odom_reader_node',
-            name='odom_reader_node',
-            output='screen'
-        ),
 
         # Robot Description Launch
         IncludeLaunchDescription(
