@@ -123,8 +123,8 @@ controller_server:
       movement_time_allowance: 10.0
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.5
+      yaw_goal_tolerance: 0.5
       stateful: True
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -134,8 +134,8 @@ controller_server:
       vx_std: 0.2
       vy_std: 0.2
       wz_std: 0.4
-      vx_max: 0.5
-      vx_min: -0.35
+      vx_max: 0.65
+      vx_min: -0.65
       vy_max: 0.5
       wz_max: 1.9
       iteration_count: 1
@@ -495,8 +495,8 @@ velocity_smoother:
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [1, 0.0, 1.0]
-    min_velocity: [-1, 0.0, -1.0]
+    max_velocity: [0.65, 0.0, 0.8] # snelheid, y, rotatie snelheid
+    min_velocity: [-0.65, 0.0, -0.8]
     max_accel: [2.5, 0.0, 3.2]
     max_decel: [-2.5, 0.0, -3.2]
     odom_topic: "odom"
