@@ -47,5 +47,12 @@ def generate_launch_description():
             executable='motor_control_node',
             name='motor_control_node',
             output='screen'
+        ),
+
+        Node(
+            package='xbox_controller_pkg',
+            executable='xbox_controller_node',
+            name='xbox_controller_node',
+            output='screen'
         )
     ])
